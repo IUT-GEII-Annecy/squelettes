@@ -1,0 +1,1 @@
+Ce repo contient les squelettes pour les TPs de C de l'IUT d'Annecy
