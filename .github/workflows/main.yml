@@ -1,45 +1,45 @@
-name: Zip et Release par branche
+name: Zip Dirs
 
 on:
-  push:
   workflow_dispatch:
+  push:
+    branches:
+      - '**'
 
 jobs:
-  build:
+  zip:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Installer zip
-        run: sudo apt-get install -y zip
-
-      - name: Déterminer les dossiers modifiés
-        id: changed
+      - name: Find changed dirs
+        id: dirs
         run: |
-          CHANGED_DIRS=$(git diff --name-only ${{ github.sha }} ${{ github.sha }}^ | cut -d/ -f1 | sort -u)
+          if git rev-parse --verify "${{ github.sha }}^" >/dev/null 2>&1; then
+            CHANGED_DIRS=$(git diff --name-only ${{ github.sha }}^ ${{ github.sha }} | cut -d/ -f1 | sort -u)
+          else
+            CHANGED_DIRS=$(git ls-tree --name-only -d HEAD)
+          fi
           echo "dirs=$CHANGED_DIRS" >> $GITHUB_OUTPUT
 
-      - name: Créer les archives zip
-        if: steps.changed.outputs.dirs != ''
+      - name: Zip changed dirs
+        if: steps.dirs.outputs.dirs != ''
         run: |
-          mkdir zips
-          for dir in ${{ steps.changed.outputs.dirs }}; do
-            if [ -d "$dir" ]; then
-              zip -r "zips/${dir}.zip" "$dir"
+          mkdir -p zips
+          for d in ${{ steps.dirs.outputs.dirs }}; do
+            if [ -d "$d" ]; then
+              zip -r "zips/${d}_${GITHUB_REF_NAME}_${GITHUB_SHA::7}.zip" "$d"
             fi
           done
 
-      - name: Publier sur la release de la branche
-        if: steps.changed.outputs.dirs != ''
-        uses: softprops/action-gh-release@v2
+      - name: Upload zips to release
+        if: steps.dirs.outputs.dirs != ''
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref_name }}
-          name: "Zips de la branche ${{ github.ref_name }}"
+          tag_name: branch-${{ github.ref_name }}
+          name: "Branch ${{ github.ref_name }}"
           files: zips/*.zip
-          draft: false
-          prerelease: false
-          append_body: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
