@@ -22,7 +22,8 @@ jobs:
           else
             CHANGED_DIRS=$(git ls-tree --name-only -d HEAD)
           fi
-          echo "dirs=$CHANGED_DIRS" >> $GITHUB_OUTPUT
+          echo "dirs=$(echo $CHANGED_DIRS | tr '\n' ' ')" >> $GITHUB_OUTPUT
+
 
       - name: Zip changed dirs
         if: steps.dirs.outputs.dirs != ''
@@ -33,6 +34,7 @@ jobs:
               zip -r "zips/${d}_${GITHUB_REF_NAME}_${GITHUB_SHA::7}.zip" "$d"
             fi
           done
+
 
       - name: Upload zips to release
         if: steps.dirs.outputs.dirs != ''
