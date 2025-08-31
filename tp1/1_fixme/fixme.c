@@ -1,4 +1,8 @@
-// Corriger le code suivant : 
+/*---------------------------------------------------------------------------*/
+/* Fichier : fixme.c                                                         */
+/* Cahier des charges : Corriger ce code pour qu'il fonctionne               */ 
+/*---------------------------------------------------------------------------*/
+
 
 #include <cs50.h>
 
