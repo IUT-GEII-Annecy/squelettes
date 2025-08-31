@@ -31,7 +31,7 @@ jobs:
           mkdir -p zips
           for d in ${{ steps.dirs.outputs.dirs }}; do
             if [ -d "$d" ]; then
-              zip -r "zips/${d}_${GITHUB_REF_NAME}_${GITHUB_SHA::7}.zip" "$d"
+              zip -r "zips/${d}_${GITHUB_REF_NAME}.zip" "$d"
             fi
           done
 
