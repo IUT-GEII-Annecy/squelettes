@@ -1,0 +1,44 @@
+name: Zip et Release par branche
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Installer zip
+        run: sudo apt-get install -y zip
+
+      - name: Déterminer les dossiers modifiés
+        id: changed
+        run: |
+          CHANGED_DIRS=$(git diff --name-only ${{ github.sha }} ${{ github.sha }}^ | cut -d/ -f1 | sort -u)
+          echo "dirs=$CHANGED_DIRS" >> $GITHUB_OUTPUT
+
+      - name: Créer les archives zip
+        if: steps.changed.outputs.dirs != ''
+        run: |
+          mkdir zips
+          for dir in ${{ steps.changed.outputs.dirs }}; do
+            if [ -d "$dir" ]; then
+              zip -r "zips/${dir}.zip" "$dir"
+            fi
+          done
+
+      - name: Publier sur la release de la branche
+        if: steps.changed.outputs.dirs != ''
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: "Zips de la branche ${{ github.ref_name }}"
+          files: zips/*.zip
+          draft: false
+          prerelease: false
+          append_body: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
