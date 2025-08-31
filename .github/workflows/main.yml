@@ -2,6 +2,7 @@ name: Zip et Release par branche
 
 on:
   push:
+  workflow_dispatch:
 
 jobs:
   build:
