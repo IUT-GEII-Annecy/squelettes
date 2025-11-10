@@ -2,19 +2,25 @@
 CC      = clang
 CFLAGS  = -std=c11 -Wall -Wextra -Werror -g -Iheaders
 LDLIBS  = -lcs50
-PROG    = tacos
+PROG    = tacos boulangerie
 
 # --- Sources & objets ---
-SRC := tacos.c sources/fonctions.c
-OBJ := $(patsubst %.c,build/%.o,$(SRC))
-DEP := $(OBJ:.o=.d)
+SRC_TACOS := tacos.c sources/boutique.c
+OBJ_TACOS := $(patsubst %.c,build/%.o,$(SRC_TACOS))
+DEP_TACOS := $(OBJ_TACOS:.o=.d)
+SRC_BOULANGERIE := boulangerie.c sources/boutique.c
+OBJ_BOULANGERIE := $(patsubst %.c,build/%.o,$(SRC_BOULANGERIE))
+DEP_BOULANGERIE := $(OBJ_BOULANGERIE:.o=.d)
 
 # --- Règle par défaut ---
 all: $(PROG)
 
 # --- Édition de liens ---
-$(PROG): $(OBJ)
-	$(CC) $(OBJ) $(LDLIBS) -o $@
+tacos: $(OBJ_TACOS)
+	$(CC) $(OBJ_TACOS) $(LDLIBS) -o $@
+
+boulangerie: $(OBJ_BOULANGERIE)
+	$(CC) $(OBJ_BOULANGERIE) $(LDLIBS) -o $@
 
 # --- Compilation avec dépendances automatiques ---
 build/%.o: %.c
