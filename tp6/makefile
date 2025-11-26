@@ -1,7 +1,7 @@
 # --- Config ---
 CC      = clang
 CFLAGS  = -std=c11 -Wall -Wextra -Werror -g -Iheaders
-LDLIBS  = -lcs50
+LDLIBS  = -lcs50 -lm
 
 # --- Sources ---
 LIB_SRC := sources/geometrie.c
