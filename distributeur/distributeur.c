@@ -10,5 +10,7 @@
 
 int main(void)
 {
-    string nom = 
+    string nom;
+    string boisson = "";
+    int // A compléter
 }
