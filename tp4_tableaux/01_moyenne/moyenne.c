@@ -8,11 +8,11 @@
 #define NB_NOTES 10
 
 float calculer_moyenne(float notes[], int taille){
-    float somme = 0;
+    int somme = 0;
     for (int i = 0; i < taille; i++){
         somme += notes[i];
     }
-    return (int) somme / taille;
+    return somme / taille;
 }
 
 int main(void){
