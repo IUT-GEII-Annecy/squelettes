@@ -1,0 +1,8 @@
+check50:
+  iut-geii-annecy/2026/projets/penalty
+submit50:
+  iut-geii-annecy/2026/projets/penalty:
+    include:
+      - projet.c
+    exclude:
+      - "*"

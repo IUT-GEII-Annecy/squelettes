@@ -1,0 +1,8 @@
+check50:
+  iut-geii-annecy/2026/projets/compteestbon
+submit50:
+  iut-geii-annecy/2026/projets/compteestbon:
+    include:
+      - projet.c
+    exclude:
+      - "*"

@@ -1,0 +1,8 @@
+check50:
+  iut-geii-annecy/2026/projets/simon
+submit50:
+  iut-geii-annecy/2026/projets/simon:
+    include:
+      - projet.c
+    exclude:
+      - "*"
