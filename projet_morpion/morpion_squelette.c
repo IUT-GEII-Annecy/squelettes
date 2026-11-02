@@ -1,24 +1,24 @@
 int main(void) {
 
-    int l_tab_jeu[9] = {1,0,0,0,2,0,1,0,2};
+    int grille[9] = {1,0,0,0,2,0,1,0,2};
 
-    int iBcl1 = 0, iBcl2 = 0, l_joueur = 0, l_cpt = 0;
+    int i = 0, j = 0, joueur = 0, nb_coups = 0;
 
-    for(iBcl2 = 0 ; iBcl2 <3 ; iBcl2++){
+    for(j = 0 ; j <3 ; j++){
         printf("\n+---+---+---+\n|");
-        for(iBcl1 = 6-3*iBcl2 ; iBcl1<9-3*iBcl2;iBcl1++){
-            printf(" %c |",(l_tab_jeu[iBcl1]==1)*'X' + (l_tab_jeu[iBcl1]==2)*'O' + (l_tab_jeu[iBcl1]==0)*32);
+        for(i = 6-3*j ; i<9-3*j;i++){
+            printf(" %c |",(grille[i]==1)*'X' + (grille[i]==2)*'O' + (grille[i]==0)*32);
         }
     }
     printf("\n+---+---+---+\n");
 
     do{
-        l_joueur = (l_cpt%2) + 1 ;
-        printf("\n\nJoueur %i joue", l_joueur);
+        joueur = (nb_coups%2) + 1 ;
+        printf("\n\nJoueur %i joue", joueur);
 
         // Code commun aux deux joueurs
 
-        l_cpt++;
+        nb_coups++;
     }while(1);
 
     return 0;

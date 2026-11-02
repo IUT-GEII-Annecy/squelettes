@@ -1,14 +1,14 @@
-void printSquareColor(int x_code);
+void afficher_carre_couleur(int code_couleur);
 
-//prototype de la fonction printSquareColor()
+//prototype de la fonction afficher_carre_couleur()
 int main(void) {
 
     srand(time(NULL));  // Initialise le générateur aléatoire. Nécessite #include <time.h>
     printf("\n");
 
     //Boucle qui affiche 10 carrés de couleurs aléatoires 
-    for(int iBcl = 0;iBcl<10;iBcl++){
-        printSquareColor(rand()%4);
+    for(int i = 0;i<10;i++){
+        afficher_carre_couleur(rand()%4);
         printf(" ");
 
     }
@@ -20,10 +20,10 @@ int main(void) {
 
 }
 
-//fonction printSquareColor() qui affiche un carré. Le paramètre d'entrée indique le code de  la couleur du carré souhaitée. Pas de retour.
-void printSquareColor(int x_code){
+//fonction afficher_carre_couleur() qui affiche un carré. Le paramètre d'entrée indique le code de  la couleur du carré souhaitée. Pas de retour.
+void afficher_carre_couleur(int code_couleur){
 
-    switch(x_code){
+    switch(code_couleur){
 
         case 0 :
 //O pour afficher un carré noir

@@ -7,27 +7,27 @@
 
 int main(void) {
 
-    int l_valeurs[NB_CASES];          // valeurs cachées (8 paires)
-    int l_trouvee[NB_CASES] = {0};    // 1 si la case appartient à une paire trouvée
-    int iBcl;
+    int valeurs[NB_CASES];          // valeurs cachées (8 paires)
+    int trouvees[NB_CASES] = {0};    // 1 si la case appartient à une paire trouvée
+    int i;
 
     srand(time(NULL));  // Initialise le générateur aléatoire
 
     // Remplissage : 1,1,2,2,...,8,8
-    for(iBcl = 0; iBcl < NB_CASES; iBcl++){
-        l_valeurs[iBcl] = iBcl / 2 + 1;
+    for(i = 0; i < NB_CASES; i++){
+        valeurs[i] = i / 2 + 1;
     }
 
-    // TODO : mélanger l_valeurs par échanges aléatoires
+    // TODO : mélanger valeurs par échanges aléatoires
 
     // Affichage de la grille cachée (4 x 4)
-    for(iBcl = 0; iBcl < NB_CASES; iBcl++){
-        if(l_trouvee[iBcl]){
-            printf(" %d ", l_valeurs[iBcl]);
+    for(i = 0; i < NB_CASES; i++){
+        if(trouvees[i]){
+            printf(" %d ", valeurs[i]);
         } else {
             printf(" ? ");
         }
-        if(iBcl % 4 == 3){
+        if(i % 4 == 3){
             printf("\n");
         }
     }

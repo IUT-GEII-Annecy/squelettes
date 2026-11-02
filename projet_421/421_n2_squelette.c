@@ -29,7 +29,7 @@ static int points_combinaison(int a, int b, int c) {
 int main(void) {
     int points[2] = {30, 30};
     int joueur = 0; // 0 ou 1
-    char cont = 0;
+    char continuer = 0;
 
     srand(time(NULL));
 
@@ -74,8 +74,8 @@ int main(void) {
 
         printf("Scores -> J1: %d | J2: %d\n", points[0], points[1]);
 
-        cont = get_char("Continuer ? (o/n) ");
-    } while (cont != 'n' && points[0] > 0 && points[1] > 0);
+        continuer = get_char("Continuer ? (o/n) ");
+    } while (continuer != 'n' && points[0] > 0 && points[1] > 0);
 
     if (points[0] <= 0) printf("Victoire du Joueur 2 !\n");
     else if (points[1] <= 0) printf("Victoire du Joueur 1 !\n");

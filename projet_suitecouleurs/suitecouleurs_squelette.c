@@ -1,20 +1,20 @@
-void printSquareColor(int x_code);
+void afficher_carre_couleur(int code_couleur);
 
 int main(void) {
 
-    int iBcl;
+    int i;
     printf("\n");
 
-    for(iBcl = 0;iBcl<4;iBcl++){
-        printSquareColor(iBcl);
+    for(i = 0;i<4;i++){
+        afficher_carre_couleur(i);
         printf(" ");
     }
     return 0;
 }
 
-void printSquareColor(int x_code){
+void afficher_carre_couleur(int code_couleur){
 
-    switch(x_code){
+    switch(code_couleur){
 
         case 0 :
             printf("\033[40m  \033[0m");

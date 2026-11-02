@@ -6,11 +6,11 @@
 
 int main(void) {
 
-    int l_grille[TAILLE][TAILLE] = {{ 1,  2,  3,  4},
+    int grille[TAILLE][TAILLE] = {{ 1,  2,  3,  4},
                                     { 5,  6,  7,  8},
                                     { 9, 10, 11, 12},
                                     {13, 14, 15,  0}};   // 0 = case vide
-    int iBclL, iBclC;
+    int i, j;
 
     srand(time(NULL));  // Initialise le générateur aléatoire
 
@@ -18,12 +18,12 @@ int main(void) {
     // TODO : mélanger la grille par des déplacements valides aléatoires
 
     // Affichage de la grille
-    for(iBclL = 0; iBclL < TAILLE; iBclL++){
-        for(iBclC = 0; iBclC < TAILLE; iBclC++){
-            if(l_grille[iBclL][iBclC] == 0){
+    for(i = 0; i < TAILLE; i++){
+        for(j = 0; j < TAILLE; j++){
+            if(grille[i][j] == 0){
                 printf("   ");
             } else {
-                printf("%3d", l_grille[iBclL][iBclC]);
+                printf("%3d", grille[i][j]);
             }
         }
         printf("\n");

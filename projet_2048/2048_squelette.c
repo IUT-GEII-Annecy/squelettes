@@ -6,17 +6,17 @@
 
 int main(void) {
 
-    int l_grille[TAILLE][TAILLE] = {{0}};   // 0 = case vide
-    int iBclL, iBclC;
+    int grille[TAILLE][TAILLE] = {{0}};   // 0 = case vide
+    int i, j;
 
     srand(time(NULL));  // Initialise le générateur aléatoire
 
     // TODO : placer 2 tuiles de valeur 2 sur deux cases vides distinctes
 
     // Affichage de la grille
-    for(iBclL = 0; iBclL < TAILLE; iBclL++){
-        for(iBclC = 0; iBclC < TAILLE; iBclC++){
-            printf("%5d", l_grille[iBclL][iBclC]);
+    for(i = 0; i < TAILLE; i++){
+        for(j = 0; j < TAILLE; j++){
+            printf("%5d", grille[i][j]);
         }
         printf("\n");
     }

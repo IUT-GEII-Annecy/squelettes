@@ -1,11 +1,11 @@
 int main(void)
 {
-    string l_mot;
-    int iBcl = 0;
+    string mot;
+    int i = 0;
 
-    l_mot = get_string("Entrer le mot \n");
+    mot = get_string("Entrer le mot \n");
     do{
-        printf("%c\n",l_mot[iBcl]);
-        iBcl++;
-    }while(l_mot[iBcl] != 0);
+        printf("%c\n",mot[i]);
+        i++;
+    }while(mot[i] != 0);
 }

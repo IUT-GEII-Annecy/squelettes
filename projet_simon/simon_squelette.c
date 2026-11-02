@@ -1,24 +1,24 @@
 int main(void) {
-    char l_tab_jeuCorrect[50]; // Déclaration du tableau de jeu
-    char l_tab_joueur[50];     // Déclaration du tableau du joueur pour la saisie
-    int l_nbrCoup = 0, l_joueur = 0, iBcl = 0;
+    char sequence_correcte[50]; // Déclaration du tableau de jeu
+    char saisie_joueur[50];     // Déclaration du tableau du joueur pour la saisie
+    int nb_coups = 0, joueur = 0, i = 0;
 
     srand(time(NULL)); // Initialise le générateur aléatoire. Nécessite #include <time.h>
 
     // On impose une seule boucle pour les 2 joueurs (même code) :
     do {
-        printf("Joueur %d joue\n", l_joueur);
+        printf("Joueur %d joue\n", joueur);
 
-        l_tab_jeuCorrect[l_nbrCoup] = get_char("Quelle lettre ?");
+        sequence_correcte[nb_coups] = get_char("Quelle lettre ?");
 
         printf("Le tableau est : \n");
-        for (iBcl = 0; iBcl <= l_nbrCoup; iBcl++) {
-            printf("%c ", l_tab_jeuCorrect[iBcl]);
+        for (i = 0; i <= nb_coups; i++) {
+            printf("%c ", sequence_correcte[i]);
         }
         printf("\n\n");
 
-        l_joueur = !l_joueur; // Pour passer au 2ème joueur
-        l_nbrCoup++;
+        joueur = !joueur; // Pour passer au 2ème joueur
+        nb_coups++;
 
     } while (1); // Boucle infinie
 
