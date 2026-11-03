@@ -1,35 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <unistd.h>   // sleep()
-
-#define NB_CASES 16
 
 int main(void) {
 
-    int valeurs[NB_CASES];          // valeurs cachées (8 paires)
-    int trouvees[NB_CASES] = {0};    // 1 si la case appartient à une paire trouvée
-    int i;
+    char lettres[16];
+    int trouvees[16] = {0};
 
-    srand(time(NULL));  // Initialise le générateur aléatoire
+    int i = 0, j = 0;
 
-    // Remplissage : 1,1,2,2,...,8,8
-    for(i = 0; i < NB_CASES; i++){
-        valeurs[i] = i / 2 + 1;
-    }
+    srand(time(NULL));
 
-    // TODO : mélanger valeurs par échanges aléatoires
+    // Affichage de la grille de jeu
 
-    // Affichage de la grille cachée (4 x 4)
-    for(i = 0; i < NB_CASES; i++){
-        if(trouvees[i]){
-            printf(" %d ", valeurs[i]);
-        } else {
-            printf(" ? ");
+    printf("+----+----+----+----+\n");
+    for(j = 0 ; j < 4 ; j++){
+        for(i = 0 ; i < 4 ; i++){
+            printf("| ?  ");
         }
-        if(i % 4 == 3){
-            printf("\n");
+        printf("|\n");
+        for(i = 0 ; i < 4 ; i++){
+            printf("| %2d ", 4*j + i + 1);
         }
+        printf("|\n+----+----+----+----+\n");
     }
 
     return 0;
