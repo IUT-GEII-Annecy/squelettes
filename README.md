@@ -1,5 +1,13 @@
 Ce repo contient les squelettes pour les TPs de C de l'IUT d'Annecy
 
+## tp6
+
+Télécharger le squelette :
+
+```
+wget https://github.com/IUT-GEII-Annecy/squelettes/releases/download/branch-2026/tp6.zip
+```
+
 ## eval_pratique_1
 
 Télécharger les squelettes :
